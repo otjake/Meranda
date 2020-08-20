@@ -1,37 +1,84 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+
+<!-- Mirrored from coderthemes.com/adminto/layouts/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Aug 2020 22:16:25 GMT -->
 <head>
-    <base href="./">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="Agribizcenter">
+    <meta charset="utf-8" />
+    <title>Dashboard | Adminto - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>CoreUI-Laravel</title>
-
-<!-- Styles -->
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="{{asset('css/bootstrap.min.css')}}" id="bootstrap-stylesheet" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{asset('css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!-- App Css-->
+    <link href="{{asset('css/admin_app.min.css')}}" id="app-stylesheet" rel="stylesheet" type="text/css" />
 
 </head>
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 
-@include('includes.admin_header')
-<div class="app-body">
-{{--    @include('includes.admin_sidebar')--}}
-{{--    <main class="main">--}}
-{{--        @include('includes.admin_breadcrumb')--}}
-{{--        @yield('content')--}}
-{{--    </main>--}}
+<body>
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Topbar Start -->
+ @include('includes.admin_nav')
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left-side-menu">
+        @include('includes.admin_sidebar')
+    </div>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                @yield('content')
+        </div> <!-- container-fluid -->
+        </div>
+
+        @include('includes.admin_footer')
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+
 </div>
-{{--@include('includes.admin_footer')--}}
+<!-- END wrapper -->
 
-<!-- Scripts -->
-<script src="{{ asset('js/admin_app.js') }}"></script>
-<script src="{{ asset('js/custom-tooltips.js') }}"></script>
 
-@yield('scripts')
+
+<!-- Vendor js -->
+<script src="{{asset('js/vendor.min.js')}}"></script>
+
+<!-- knob plugin -->
+<script src="{{asset('libs/jquery-knob/jquery.knob.min.js')}}"></script>
+
+<!--Morris Chart-->
+<script src="{{asset('libs/morris-js/morris.min.js')}}"></script>
+<script src="{{asset('libs/raphael/raphael.min.js')}}"></script>
+
+<!-- Dashboard init js-->
+<script src="{{asset('js/pages/dashboard.init.js')}}"></script>
+
+<!-- App js -->
+<script src="{{asset('js/app.min.js')}}"></script>
+
 </body>
+
 </html>
