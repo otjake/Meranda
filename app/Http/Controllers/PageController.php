@@ -19,7 +19,7 @@ class PageController extends Controller
 //        $menus=DB::select('select * from menus WHERE `menu_status`=1 ');//for out menu items
         $menus=Menu::where('menu_status',1)->get();
 
-        $contents=Post::where('menu_id',$menu->id)->get();
+        $contents=Post::where('menu_id',$menu->id)->where('post_status',1)->get();
 //        $contents=DB::select("select * from posts WHERE menu_id=$menu->id");
 
         return view('/pages/single_menu',compact('menus','contents'));

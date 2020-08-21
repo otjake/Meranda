@@ -6,7 +6,7 @@
                 @foreach($contents as $content)
                 <div class="col-lg-8 single-content">
                     <p class="mb-5">
-                        <img src="{{asset($content->post_img)}}" alt="Image" class="img-fluid">
+                        <img src="/storage/post_img/{{$content->post_img}}" alt="Image" class="img-fluid">
                     </p>
                     <h1 class="mb-4">
                         {{$content->post_title}}

@@ -10,6 +10,7 @@ class Post extends Model
     protected $guarded=[];
 
 
+
     public function Menu(){
         return $this->belongsTo(\App\Menu::class);
     }

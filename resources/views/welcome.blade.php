@@ -6,7 +6,8 @@
             <div class="site-section">
                 <div class="container">
                     <div class="half-post-entry d-block d-lg-flex bg-light">
-                        <div class="img-bg" style="background-image: url('{{asset($editor_pick->post_img)}}')"></div>
+{{--                        <div class="img-bg" style="background-image: url('{{asset($editor_pick->post_img)}}')"></div>--}}
+                        <div class="img-bg" style="background-image: url('/storage/post_img/{{$editor_pick->post_img}}')"></div>
                         <div class="contents">
                             <span class="caption">editor's pick</span>
                             <h2><a href="/pages/single_blog/{{$editor_pick->id}}">{{$editor_pick->post_title}}</a></h2>
@@ -37,7 +38,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="post-entry-1">
-                                <a href="/pages/single_blog/{{$editor_pick->id}}"><img src="{{$editor_pick->post_img}}" alt="Image" class="img-fluid"></a>
+                                <a href="/pages/single_blog/{{$editor_pick->id}}"><img src="/storage/post_img/{{$editor_pick->post_img}}" alt="Image" class="img-fluid"></a>
                                 <h2><a href="/pages/single_blog/{{$editor_pick->id}}">{{$editor_pick->post_title}}</a></h2>
                                 <p>{{substr($editor_pick->post_body,0,200)}}</p>
                                 <div class="post-meta">
@@ -123,11 +124,11 @@
     <div class="py-0">
         <div class="container">
             <div class="half-post-entry d-block d-lg-flex bg-light">
-                <div class="img-bg" style="background-image: url('{{asset($editor_pick->post_img)}}')"></div>
+                <div class="img-bg" style="background-image: url('/storage/post_img/{{$editor_pick->post_img}}')"></div>
                 <div class="contents">
                     <span class="caption">Editor's Pick</span>
                     <h2><a href="/pages/single_blog/{{$editor_pick->id}}">{{$editor_pick->post_title}}</a></h2>
-                    <p class="mb-3">{{substr($editor_pick->post_img,0,200)}}</p>
+                    <p class="mb-3">{{substr($editor_pick->post_body,0,200)}}</p>
                     <div class="post-meta">
                         <span class="d-block"><a href="#">{{$editor_pick->post_author}}</a> in <a href="#">Food</a></span>
                         <span class="date-read">{{$editor_pick->created_at}}<span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
@@ -149,7 +150,7 @@
                     @foreach($post->Post as $content)
 
                     <div class="post-entry-2 d-flex">
-                        <div class="thumbnail" style="background-image: url('{{asset($content->post_img)}}')"></div>
+                        <div class="thumbnail" style="background-image: url('/storage/post_img/{{$content->post_img}}')"></div>
                         <div class="contents">
                             <h2><a href="/pages/single_blog/{{$editor_pick->id}}">{{$content->post_title}}</a></h2>
                             <p class="mb-3">{{$content->post_body}}</p>
@@ -159,6 +160,7 @@
                             </div>
                         </div>
                     </div>
+
                     @endforeach
                     @endif
                 </div>
@@ -176,7 +178,7 @@
                     </div>
                     @foreach($recent_posts as $new)
                     <div class="post-entry-2 d-flex">
-                        <div class="thumbnail order-md-2" style="background-image: url('{{asset($new->post_img)}}')"></div>
+                        <div class="thumbnail order-md-2" style="background-image: url('/storage/post_img/{{$new->post_img}}')"></div>
                         <div class="contents order-md-1 pl-0">
                             <h2><a href="/pages/single_blog/{{$editor_pick->id}}">{{$new->post_title}}</a></h2>
                             <p class="mb-3">{{$new->post_body}}</p>

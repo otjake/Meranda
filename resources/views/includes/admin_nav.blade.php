@@ -111,7 +111,7 @@
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <img src="{{asset('images/users/user-1.jpg')}}" alt="user-image" class="rounded-circle">
                 <span class="pro-user-name ml-1">
-                                Nowak <i class="mdi mdi-chevron-down"></i>
+                                {{auth()->user()->name}} <i class="mdi mdi-chevron-down"></i>
                             </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -141,11 +141,6 @@
             </div>
         </li>
 
-        <li class="dropdown notification-list">
-            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
-                <i class="fe-settings noti-icon"></i>
-            </a>
-        </li>
 
 
     </ul>

@@ -8,7 +8,9 @@
                 {{--                @foreach($contents as $content)--}}
                     <div class="col-lg-8 single-content">
                         <p class="mb-5">
-                            <img src="{{asset($post->post_img)}}" alt="Image" class="img-fluid">
+{{--                        <div class="img-bg" style="background-image: url('/storage/post_img/{{$post->post_img}}')"></div>--}}
+
+                        <img src="/storage/post_img/{{$post->post_img}}" alt="Image" class="img-fluid">
                         </p>
                         <h1 class="mb-4">
                             {{$post->post_title}}
