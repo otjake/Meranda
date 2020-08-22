@@ -112,7 +112,7 @@ return view('/admin/Post/edit',compact('post_update','headline','menu','headline
 
 
     public function update(Request $request,Post $post){
-//        return $request->all();
+
         $this->validate($request,[
             'menu_id'=>'required|numeric',
             'headline_id'=>'required|numeric',

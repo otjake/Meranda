@@ -282,11 +282,6 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-            $("#msg").click(function () {
-                alert("jquery is working");
-
-            })
-            //
             $("#Comment_form").submit(function (e) {
                 e.preventDefault();
                 alert("jquery is working");

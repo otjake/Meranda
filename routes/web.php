@@ -29,10 +29,13 @@ Auth::routes();
 Route::get('/admin/Post/home', 'adminPostController@index');
 Route::get('/admin/Post/create', 'adminPostController@create');
 Route::post('/admin/Post/home', 'adminPostController@store');
-//Route::post('/admin/Post/home', 'adminPostController@store');
 Route::get('/admin/Post/{post}', 'adminPostController@show');
 Route::get('/admin/Post/{post}/edit', 'adminPostController@edit');
 Route::patch('/admin/Post/{post}', 'adminPostController@update');
 Route::delete('/admin/Post/{post}', 'adminPostController@delete');
 
 Route::get('/admin/Comment/homedash', 'adminCommentController@index');
+Route::patch('/admin/Comment/{comment}', 'adminCommentController@update');
+Route::delete('/admin/Comment/{comment}', 'adminCommentController@delete');
+
+

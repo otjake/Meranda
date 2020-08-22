@@ -63,22 +63,15 @@
 <!-- END wrapper -->
 
 
+<script src="{{asset('js/jquery-3.4.1.js')}}" type="text/javascript"></script>
 
 <!-- Vendor js -->
 <script src="{{asset('js/vendor.min.js')}}"></script>
 
-<!-- knob plugin -->
-<script src="{{asset('libs/jquery-knob/jquery.knob.min.js')}}"></script>
-
-<!--Morris Chart-->
-<script src="{{asset('libs/morris-js/morris.min.js')}}"></script>
-<script src="{{asset('libs/raphael/raphael.min.js')}}"></script>
-
-<!-- Dashboard init js-->
-<script src="{{asset('js/pages/dashboard.init.js')}}"></script>
 
 <!-- App js -->
 <script src="{{asset('js/app.min.js')}}"></script>
+@yield('scripts')
 
 </body>
 
