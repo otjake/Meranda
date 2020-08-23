@@ -1,3 +1,5 @@
+<?php session_start()
+;?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +29,9 @@
 
 <!-- Begin page -->
 <div id="wrapper">
-
+<?php
+    $_SESSION['test']="default"
+?>
     <!-- Topbar Start -->
  @include('includes.admin_nav')
     <!-- end Topbar -->

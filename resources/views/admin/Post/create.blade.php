@@ -135,7 +135,7 @@
                             <label for="Editors_pick" class="col-md-4 col-form-label ">Editor Pick</label>
 
                             <div class="col-md-6">
-                                <input id="Editors_pick" type="checkbox" class="form-control" name="Editors_pick" value="{{ old('Editors_pick') }}">
+                                <input id="Editors_pick" type="checkbox" class="form-control" name="Editors_pick" value="1">
 
                                 @error('Editors_pick')
                                 <strong style="color:red">{{ $message }}</strong>
@@ -147,7 +147,7 @@
                             <label for="post_status" class="col-md-4 col-form-label ">Display Status</label>
 
                             <div class="col-md-6">
-                                <input id="post_status" type="checkbox" class="form-control" name="post_status" value="{{ old('post_status') }}"  autocomplete="url" autofocus>
+                                <input id="post_status" type="checkbox" class="form-control" name="post_status" value="1"  autocomplete="url" autofocus>
 
                                 @error('post_status')
                                 <strong style="color:red">{{ $message }}</strong>

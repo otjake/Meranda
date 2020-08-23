@@ -2,26 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\headline;
+use App\Mail\PostCreated;
 use App\Menu;
 use App\Post;
+use App\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use function GuzzleHttp\Promise\all;
 
 class adminPostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
+
+        $notifications=Comment::where('comment_status',0)->get();
+
         $posts=Post::paginate(2);
-//        dd($posts);
-        return view('admin.Post.home',compact('posts'));
+        session(['notifications'=>$notifications]);
+
+        return view('admin.Post.home',compact('posts','notifications'));
     }
+
+
     public function create()
     {
         $headlines=headline::all();
         $menus=menu::all();
-//        dd($headline);
-        return view('admin.Post.create',compact('headlines','menus'));
+//        $notifications_from_session= request()->session()->all();
+//        $notifications=$notifications_from_session['notifications'];
+
+        $notifications=session('notifications');
+
+
+        return view('admin.Post.create',compact('headlines','menus','notifications'));
     }
 
     public function store(Request $request)
@@ -35,8 +55,8 @@ class adminPostController extends Controller
          'post_tags'=>'required',
          'post_img'=>'image|max:1999',//default upload size is 2000Bytes
          'post_author'=>'required',
-         'Editors_pick'=>'bool',
-         'post_status'=>'bool',
+         'Editors_pick'=>'nullable',
+         'post_status'=>'nullable',
      ]);
 //     $rules=array(
 //         'menu_id'=>'required|numeric',
@@ -83,8 +103,19 @@ $filenameWithExt=$request->file('post_img')->getClientOriginalName();
         $post->post_status=$request->input('post_status');
         $post->save();
 
+        ####SENDING EMAIL CHECK PERSONAL DOCUMENTATION#####
 
-return redirect('/admin/Post/home')->with('success','New Post');
+        $justCreated=Post::latest()->first();
+$subscribers=Subscriber::all();
+//dd($subscribers[0]->email);
+foreach ($subscribers as $subscriber){
+        Mail::to($subscriber)->send(
+            new PostCreated($justCreated)
+        );
+        ####SENDING EMAIL CHECK PERSONAL DOCUMENTATION###
+    }
+
+        return redirect('/admin/Post/home')->with('success','New Post');
     }
 
     public function show(Post $post){
@@ -94,7 +125,9 @@ return redirect('/admin/Post/home')->with('success','New Post');
         //looping through tags
         $tag_object=explode(",",$post_update[0]->post_tags);
 
-return view('/admin/Post/show',compact('post_update','headline','menu','tag_object'));
+        $notifications=session('notifications');
+
+return view('/admin/Post/show',compact('post_update','headline','menu','tag_object','notifications'));
     }
 
 
@@ -107,7 +140,10 @@ return view('/admin/Post/show',compact('post_update','headline','menu','tag_obje
         $headlines=headline::all();
         $menus=menu::all();
 
-return view('/admin/Post/edit',compact('post_update','headline','menu','headlines','menus'));
+
+        $notifications=session('notifications');
+
+return view('/admin/Post/edit',compact('post_update','headline','menu','headlines','menus','notifications'));
     }
 
 

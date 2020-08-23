@@ -10,7 +10,8 @@ class adminCommentController extends Controller
 {
     public function index()
     {
-        $notifications=Comment::where('comment_status',0)->get();
+//        $notifications=Comment::where('comment_status',0)->get();
+        $notifications=session('notifications');
 
         $contents=Comment::with('post')->get();
         return view('admin.Comment.homedash',compact('contents','notifications'));
@@ -20,6 +21,8 @@ class adminCommentController extends Controller
 
     public function update(Request $request, Comment $comment)
     {
+        $notifications=session('notifications');
+
         $action = request('action');
         if($action==='status'){
 
